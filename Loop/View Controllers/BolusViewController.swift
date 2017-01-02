@@ -24,6 +24,7 @@ final class BolusViewController: UITableViewController, IdentifiableClass, UITex
         bolusAmountTextField.becomeFirstResponder()
     
         AnalyticsManager.sharedManager.didDisplayBolusScreen()
+        bolusAmountTextField?.text = decimalFormatter.string(from: <#T##NSNumber#>(value:recommendedBolus))
     }
 
     var recommendedBolus: Double = 0 {
@@ -36,9 +37,9 @@ final class BolusViewController: UITableViewController, IdentifiableClass, UITex
 
     private(set) var bolus: Double?
 
-    @IBOutlet weak var recommendedBolusAmountLabel: UILabel? {
+    @IBOutlet weak var bolusAmountTextField: UITextField! {
         didSet {
-            recommendedBolusAmountLabel?.text = decimalFormatter.string(from: NSNumber(value: recommendedBolus))
+            bolusAmountTextField?.text = decimalFormatter.string(from: NSNumber(value: recommendedBolus))
         }
     }
 
